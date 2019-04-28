@@ -11,6 +11,7 @@
 #include<iostream>
 #include<fstream>
 #include<iostream>
+#include<vector>
 using namespace std;
 
 
@@ -40,7 +41,10 @@ public:
     void enqueue(char item);
     char dequeue();
     void displayQueue();
+    void displayQueue_Reversed();
     bool isEmpty();
+    // make a function to display the size.
+    int size_of_Queue();
     
     //Exception Class
     class UnderFlow{};
@@ -112,7 +116,7 @@ void Queue::displayQueue(){
     
     while(tmp != NULL){
    
-    cout<< tmp->character;
+    cout<< tmp->character<<"   ";
     tmp = tmp->next;
     
     
@@ -120,6 +124,37 @@ void Queue::displayQueue(){
     
     
 }
+
+//doesn't have prev pointers so i would have to use and array or vector to display it reversed.
+void Queue :: displayQueue_Reversed(){
+   
+    if(isEmpty()){
+        cout<<"This List is empty!";
+    }
+    else{
+       
+        vector<char> container(0);
+        Node * tmp = head;
+        
+        while(tmp != NULL){
+            
+            container.push_back(tmp->character);
+            tmp = tmp->next;
+            }
+        
+           long int end_of_container = (container.size()-1);
+           while(end_of_container >= 0){
+            
+            cout << container[end_of_container]<<"   ";
+            
+            end_of_container--;
+          }
+        
+        }
+    }
+    
+    
+
 
 bool Queue::isEmpty(){
     
@@ -131,13 +166,58 @@ bool Queue::isEmpty(){
 }
 
 
+
+
+int Queue :: size_of_Queue(){
+    Node * tmp = head;
+    int count = 0;
+    
+    while(tmp != NULL){
+        tmp = tmp->next;
+        count++;
+        
+        
+    }
+    return count;
+}
+
+
+
+
 int main()
 {
     
+    char list[14] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N'};
+    Queue Q;
     
     
+    for(int i= 0; i < 14; i++){
+
+    Q.enqueue(list[i]);
+    }
     
-   
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+    Q.dequeue();
+  Q.displayQueue();
+    
+   cout << Q.size_of_Queue();
+  
+   //Q.displayQueue_Reversed();
+    
+    
     return 0;
 }
 
