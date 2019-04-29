@@ -45,6 +45,10 @@ public:
     bool isEmpty();
     // make a function to display the size.
     int size_of_Queue();
+    // sort in alphabetical
+    void sort_in_ascending();
+    
+    //sort in decending order.
     
     //Exception Class
     class UnderFlow{};
@@ -165,6 +169,101 @@ bool Queue::isEmpty(){
     
 }
 
+void Queue ::sort_in_ascending(){
+    if(isEmpty()){
+        cout<<"This list is empty";
+        
+    }
+    else{
+        vector<char> container(10);
+        Node * tmp = head;
+        
+        for(int i = 0; i < 10 && tmp->next!=NULL; i++){
+            
+            container[i] = tmp->character;
+            tmp = tmp->next;
+        }
+        
+        
+        while(tmp!= NULL){
+            
+            container.push_back(tmp->character);
+            tmp = tmp->next;
+            
+        }
+        
+        long int end_of_container = (container.size());
+        
+        
+        int j;
+    char temp;
+        
+        for(int index = 1; index < end_of_container ; index++){
+            j=index;
+            
+            while(j > 0 && (container[j] < (container[j-1]))){
+                //swap
+                
+                temp = container[j];
+                container[j] =  container[j-1];
+                 container[j-1] = temp;
+                j--;
+                
+            }
+        }
+        /*
+        int i, j;
+        bool swapped;
+        for (i = 0; i < end_of_container; i++)
+        {
+            swapped = false;
+            for (j = 0; j < end_of_container-i; j++)
+            {
+                if (container[j] > container[j+1])
+                {
+                    swap(container[j], container[j+1]);
+                    swapped = true;
+                }
+            }
+            
+            // IF no two elements were swapped by inner loop, then break
+            if (swapped == false)
+                break;
+        }
+        
+        
+        
+        
+        Node * tmp3 = head;
+        
+        while(tmp3 != NULL){
+            
+            head = head->next;
+            delete tmp3;
+            tmp3 = head;
+            
+        }
+        rear = NULL;
+        head = NULL;
+        
+        for(int i = 0; i < end_of_container; i++){
+            enqueue(container[i]);
+            
+        }
+        
+         */
+        
+        
+        Node * tmp_l = head;
+        for(int i = 0; i < end_of_container; i++){
+        
+            tmp_l->character = container[i];
+            tmp_l =tmp_l->next;
+        }
+        
+    }
+        
+}
 
 
 
@@ -187,7 +286,7 @@ int Queue :: size_of_Queue(){
 int main()
 {
     
-    char list[14] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N'};
+    char list[14] = {'I','J','A','B','K','L','M','N','E','F','G','H','C','D'};
     Queue Q;
     
     
@@ -196,23 +295,11 @@ int main()
     Q.enqueue(list[i]);
     }
     
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
-    Q.dequeue();
+   
   Q.displayQueue();
-    
+ Q.sort_in_ascending();
+    cout << endl<<endl;
+Q.displayQueue();
    cout << Q.size_of_Queue();
   
    //Q.displayQueue_Reversed();
