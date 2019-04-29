@@ -34,7 +34,6 @@ private:
     Node * head;
     Node * rear;
     
-    
 public:
     Queue();
     ~Queue();
@@ -315,15 +314,42 @@ int main()
     Q.enqueue(list[i]);
     }
     
-   
-  Q.displayQueue();
- //Q.sort_in_ascending();
+    cout<<"Here is the queue normally"<<"\n";
+    Q.displayQueue();
+    cout<<endl<<endl;
+    
+    cout <<"This is the queue in reversed"<<"\n";
+    Q.displayQueue_Reversed();
+    cout<<endl<<endl;
+    
+    cout<<"This is in ascending order"<<"\n";
+    Q.sort_in_ascending();
+    Q.displayQueue();
+    cout<<endl<<endl;
+    
+    cout<<"This is in descending order"<<"\n";
     Q.sort_in_descending();
+    Q.displayQueue();
     cout << endl<<endl;
-Q.displayQueue();
-   cout << Q.size_of_Queue();
+    
+    
+
+    cout <<"Here is the size of the queue: " << Q.size_of_Queue()<<endl<<endl;
+    
+    cout<<"Remove 3 nodes in the queue "<<endl<<endl;
+    for(int i = 0; i < 3;i++)
+    Q.dequeue();
   
-   //Q.displayQueue_Reversed();
+    cout<<"Here is the new size of the queue: " << Q.size_of_Queue()<<endl<<endl;
+    
+    
+    for(int i = 0; i<10; i++)
+        Q.enqueue('a');
+    
+    cout<<"Add the character a 10 times "<<endl<<endl;
+    Q.displayQueue();
+    cout<<endl<<endl;
+    cout<<"Here is the new size : "<<Q.size_of_Queue()<<endl<<endl;
     
     
     return 0;
