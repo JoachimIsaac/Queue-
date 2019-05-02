@@ -304,56 +304,61 @@ int Queue :: size_of_Queue(){
 
 int main()
 {
-    
-    char list[14] = {'I','J','A','B','K','L','M','N','E','F','G','H','C','D'};
+    char customers[26]{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
     Queue Q;
+    int number_of_customers;
+    int number_to_serve;
+    int add_on = 0;
+    int counter2 = 0;
+    
+    do{
+    cout << "How many customers are entering the serving line?"<<endl;
+    cin>>number_of_customers;
     
     
-    for(int i= 0; i < 14; i++){
-
-    Q.enqueue(list[i]);
+        for(int counter = 0; counter < number_of_customers;counter++ ){
+            
+            Q.enqueue(customers[counter + counter2]);
+            
+            
+        }
+        counter2 += number_of_customers;
+        
+        
+    
+    cout<<"Customers in queue: ";Q.displayQueue();
+        cout<<endl;
+    cout<<"How many customers will be served at this time?"<<endl;
+    cin>>number_to_serve;
+    
+    for(int counter = 0; counter < number_to_serve; counter++){
+        Q.dequeue();
     }
-    
-    cout<<"Here is the queue normally"<<"\n";
+        
+    cout<<"Customers in queue: ";
     Q.displayQueue();
-    cout<<endl<<endl;
+        cout<<endl;
+        add_on = number_to_serve+2;
+        
+        
+        
+    }while(!Q.isEmpty());
     
-    cout <<"This is the queue in reversed"<<"\n";
-    Q.displayQueue_Reversed();
-    cout<<endl<<endl;
     
-    cout<<"This is in ascending order"<<"\n";
-    Q.sort_in_ascending();
-    Q.displayQueue();
-    cout<<endl<<endl;
     
-    cout<<"This is in descending order"<<"\n";
-    Q.sort_in_descending();
-    Q.displayQueue();
-    cout << endl<<endl;
+    
     
     
 
-    cout <<"Here is the size of the queue: " << Q.size_of_Queue()<<endl<<endl;
-    
-    cout<<"Remove 3 nodes in the queue "<<endl<<endl;
-    for(int i = 0; i < 3;i++)
-    Q.dequeue();
-  
-    cout<<"Here is the new size of the queue: " << Q.size_of_Queue()<<endl<<endl;
     
     
-    for(int i = 0; i<10; i++)
-        Q.enqueue('a');
     
-    cout<<"Add the character a 10 times "<<endl<<endl;
-    Q.displayQueue();
-    cout<<endl<<endl;
-    cout<<"Here is the new size : "<<Q.size_of_Queue()<<endl<<endl;
+
     
     
     return 0;
 }
+
 
 
 
