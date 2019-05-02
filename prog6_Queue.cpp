@@ -308,7 +308,6 @@ int main()
     Queue Q;
     int number_of_customers;
     int number_to_serve;
-    int add_on = 0;
     int counter2 = 0;
     
     do{
@@ -338,7 +337,7 @@ int main()
     cout<<"Customers in queue: ";
     Q.displayQueue();
         cout<<endl;
-        add_on = number_to_serve+2;
+      
         
         
         
